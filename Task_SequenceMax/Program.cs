@@ -6,27 +6,32 @@
 // [1, 5, 2, 3, 4, 6, 1, 7] => [1, 7]
 // [1, 5, 2, 3, 4, 1, 7, 8 , 15 , 1 ] => [1, 5]
 // [1, 5, 3, 4, 1, 7, 8 , 15 , 1 ] => [3, 5]
-try
+
+Console.WriteLine("Enter size of array");
+int size = Convert.ToInt32(Console.ReadLine());
+int[] numbers = ReadNumbersAndCreateArray(size);
+Console.WriteLine("Our array is: ");
+PrintArray(numbers);
+int[] res = MaxSequenceElement(numbers);
+Console.WriteLine($"The maximum sequence of this array is from {res[0]} to {res[1]}");
+
+int[] ReadNumbersAndCreateArray(int n)
 {
-    Console.WriteLine("Enter numbers");
-    string text = Console.ReadLine();
-    if (text.Length > 0)
+    try
     {
-        string[] substrings = text.Split(',');//, StringSplitOptions.RemoveEmptyEntries);
-
-        int[] numbers = new int[substrings.Length];
-
-        for (int i = 0; i < numbers.Length; i++)
-            if (substrings[i] != null) numbers[i] = Convert.ToInt32(substrings[i]);
-
-        PrintArray(numbers);
-        int[] res = MaxSequenceElement(numbers);
-        Console.WriteLine($"The maximum sequence of this array is from {res[0]} to {res[1]}");
+        int[] numbers = new int[n];
+        for (int i = 0; i < n; i++)
+        {
+            Console.WriteLine($"Input {i + 1} number of array");
+            numbers[i] = Convert.ToInt32(Console.ReadLine());
+        }
+        return numbers;
     }
-}
-catch
-{
-    Console.WriteLine("You should enter numbers only!");
+    catch
+    {
+        Console.WriteLine("You inputed incorrect number!!!");
+        return new int[0];
+    }
 }
 
 void PrintArray(int[] array)
