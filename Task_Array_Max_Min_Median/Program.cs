@@ -14,11 +14,11 @@ try
         Console.WriteLine("This is our array of randoming elements: ");
         PrintArray(array);
         double[] infoArray = new double[5];
-        infoArray[0] = (double)GetMaxInArray(array)[0];
-        infoArray[1] = (double)GetMaxInArray(array)[1];
-        infoArray[2] = (double)GetMinInArray(array)[0];
-        infoArray[3] = (double)GetMinInArray(array)[1];
-        infoArray[4] = (double)GetArrayAverage(array);
+        infoArray[0] = GetMaxInArray(array)[0];
+        infoArray[1] = GetMaxInArray(array)[1];
+        infoArray[2] = GetMinInArray(array)[0];
+        infoArray[3] = GetMinInArray(array)[1];
+        infoArray[4] = GetArrayAverage(array);
 
         Console.WriteLine(" The maximum number {0} has index {1} of array,\n the minimum number {2} has index {3} of array, \n the average of elements of array is: {4:f2}", infoArray[0], infoArray[1], infoArray[2], infoArray[3], infoArray[4]);
         Console.WriteLine(" The median of our array is {0:f2}", GetArrayMedian(array));
@@ -116,7 +116,7 @@ double GetArrayMedian(int[] array)
     int size = array.Length;
     double result = 0.0;
     if (size % 2 == 1) result = array[size / 2 + 1];
-    else result = (array[size / 2] + array[size / 2 - 1]) * 0.5 ;
+    else result = (double)((array[size / 2] + array[size / 2 - 1]) * 0.5);
     return result;
 }
 
